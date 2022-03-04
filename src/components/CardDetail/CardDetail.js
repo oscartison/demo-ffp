@@ -2,7 +2,7 @@ import React from "react";
 
 const CardDetail = (props) => {
   return (
-    <div className="col" key={props.uid}>
+    <div className="col">
       <div className="card">
         <img src={props.avatar} alt={props.uid} />
         <div className="card-header">{props.username}</div>

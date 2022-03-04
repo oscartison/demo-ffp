@@ -33,12 +33,17 @@ function Home() {
   const [shouldReload, setShouldReload] = useState(false);
 
   useEffect(() => {
+    let mounted = true;
+
     fetch("https://random-data-api.com/api/users/random_user?size=100")
       .then((response) => response.json())
       .then((data) => {
-        setCardList(data);
-        setIsLoading(false);
+        if (mounted) {
+          setCardList(data);
+          setIsLoading(false);
+        }
       });
+    return () => (mounted = false);
   }, [shouldReload]);
 
   const reloadDeck = () => {
@@ -77,7 +82,7 @@ function Home() {
           <div> is loading....</div>
         ) : (
           CardList.map((item) => {
-            return <CardDetail {...item} />;
+            return <CardDetail key={item.uid} {...item} />;
           })
         )}
       </div>
