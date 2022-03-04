@@ -12,7 +12,6 @@ function Header() {
 
   const handleLogout = () => {
     setUser("");
-    navigate("/login");
   };
 
   const handleLogin = () => {
