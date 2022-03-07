@@ -1,10 +1,15 @@
-import React, { useContext } from "react";
+import React, { useState, useEffect } from "react";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import { useNavigate } from "react-router-dom";
-import { UserContext } from "../UserContext";
 
 const Login = () => {
-  const { setUser } = useContext(UserContext);
+  const storedUser = localStorage.getItem("user");
+
+  const [user, setUser] = useState(storedUser);
+
+  useEffect(() => {
+    localStorage.setItem("user", user);
+  }, [user]);
 
   let navigate = useNavigate();
 

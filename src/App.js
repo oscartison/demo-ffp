@@ -16,7 +16,6 @@ function App() {
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/" exact element={<Home />} />
-          <Route path="*" element={<Login />} />
         </Routes>
       </UserContext.Provider>
     </>

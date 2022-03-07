@@ -1,17 +1,22 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 import { Container, Nav, Navbar, Offcanvas } from "react-bootstrap";
 import { NavLink, useNavigate } from "react-router-dom";
 
-import { UserContext } from "../UserContext";
-
 function Header() {
-  const { user, setUser } = React.useContext(UserContext);
+  const storedUser = localStorage.getItem("user");
+
+  const [user, setUser] = useState(storedUser);
+
+  useEffect(() => {
+    localStorage.setItem("user", user);
+  }, [user]);
 
   let navigate = useNavigate();
 
   const handleLogout = () => {
     setUser("");
+    handleLogin();
   };
 
   const handleLogin = () => {

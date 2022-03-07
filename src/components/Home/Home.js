@@ -5,7 +5,13 @@ import CardDetail from "../CardDetail";
 import { UserContext } from "../UserContext";
 
 function Home() {
-  const { user } = useContext(UserContext);
+  const storedUser = localStorage.getItem("user");
+
+  const [user, setUser] = useState(storedUser);
+
+  useEffect(() => {
+    localStorage.setItem("user", user);
+  }, [user]);
 
   const counterReducer = (state, action) => {
     switch (action.type) {
