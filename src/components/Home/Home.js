@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState, useReducer } from "react";
 import { Navigate } from "react-router-dom";
 
 import CardDetail from "../CardDetail";
+import Header from "../Header";
 import { UserContext } from "../UserContext";
 
 function Home() {
@@ -60,39 +61,43 @@ function Home() {
   return user === "" ? (
     <Navigate to="/login" />
   ) : (
-    <div className="container">
-      <h1 className="justify-content-center">
-        {user === "" ? "Please Log In" : "Hello " + user}
-      </h1>
+    <>
+      <Header />
 
-      <div className="row row-cols-1 row-cols-md-3 g-4">
-        <button
-          onClick={reloadDeck}
-          className="btn btn-primary btn-lg btn-block"
-        >
-          Reload
-        </button>
-        <button
-          onClick={() => dispatch({ type: "INCREMENT", state })}
-          className="btn btn-secondary btn-lg btn-block"
-        >
-          {state.count}
-        </button>
-        <button
-          onClick={() => dispatch({ type: "RESET", state })}
-          className="btn btn-danger btn-lg btn-block"
-        >
-          Reset
-        </button>
-        {isLoading ? (
-          <div> is loading....</div>
-        ) : (
-          CardList.map((item) => {
-            return <CardDetail key={item.uid} {...item} />;
-          })
-        )}
+      <div className="container">
+        <h1 className="justify-content-center">
+          {user === "" ? "Please Log In" : "Hello " + user}
+        </h1>
+
+        <div className="row row-cols-1 row-cols-md-3 g-4">
+          <button
+            onClick={reloadDeck}
+            className="btn btn-primary btn-lg btn-block"
+          >
+            Reload
+          </button>
+          <button
+            onClick={() => dispatch({ type: "INCREMENT", state })}
+            className="btn btn-secondary btn-lg btn-block"
+          >
+            {state.count}
+          </button>
+          <button
+            onClick={() => dispatch({ type: "RESET", state })}
+            className="btn btn-danger btn-lg btn-block"
+          >
+            Reset
+          </button>
+          {isLoading ? (
+            <div> is loading....</div>
+          ) : (
+            CardList.map((item) => {
+              return <CardDetail key={item.uid} {...item} />;
+            })
+          )}
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 
