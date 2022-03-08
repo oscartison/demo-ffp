@@ -5,9 +5,10 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Home from "./components/Home";
 import Header from "./components/Header";
 import { UserContext } from "./components/UserContext";
+import useLocalStorage from "./components/Hook/useLocalStorage";
 
 function App() {
-  const [user, setUser] = useState("");
+  const [user, setUser] = useLocalStorage("user");
 
   return (
     <>

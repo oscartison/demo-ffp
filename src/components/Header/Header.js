@@ -54,23 +54,12 @@ function Header() {
               </Nav.Item>
               <Nav.Item>
                 <div>
-                  {user === "" ? (
-                    <button
-                      onClick={handleLogin}
-                      className="btn btn-danger btn-lg btn-block"
-                    >
-                      {" "}
-                      Log In{" "}
-                    </button>
-                  ) : (
-                    <button
-                      onClick={handleLogout}
-                      className="btn btn-danger btn-lg btn-block"
-                    >
-                      {" "}
-                      Log Out{" "}
-                    </button>
-                  )}
+                  <button
+                    onClick={user === "" ? handleLogin : handleLogout}
+                    className="btn btn-danger btn-lg btn-block"
+                  >
+                    {user === "" ? "Log In" : "Log out"}
+                  </button>
                 </div>
               </Nav.Item>
             </Nav>
