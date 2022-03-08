@@ -1,1 +1,1 @@
-export { UserContext } from "./UserContext";
+export { UserContext } from "components/UserContext";

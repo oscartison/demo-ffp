@@ -1,14 +1,13 @@
-import React, { useContext, useEffect, useState, useReducer } from "react";
+import React, { useEffect, useState, useReducer } from "react";
 import { Navigate } from "react-router-dom";
 
-import CardDetail from "../CardDetail";
-import Header from "../Header";
-import { UserContext } from "../UserContext";
+import CardDetail from "components/CardDetail";
+import Header from "components/Header";
 
 function Home() {
   const storedUser = localStorage.getItem("user");
 
-  const [user, setUser] = useState(storedUser);
+  const [user] = useState(storedUser);
 
   useEffect(() => {
     localStorage.setItem("user", user);
